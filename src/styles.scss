@@ -1,0 +1,8 @@
+// Global styles. Canopy theme first, then our own layer. Feature styles live with their components.
+// See _canopy-theme.scss for why this is not `@use '@meridian/canopy-ui/themes'`.
+@use 'styles/canopy-theme' as canopy;
+@use 'styles/tokens';
+@use 'styles/layout';
+@use 'styles/snack';
+
+@include canopy.theme();
