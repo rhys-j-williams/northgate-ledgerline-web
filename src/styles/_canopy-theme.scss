@@ -1,0 +1,74 @@
+// Material 16 build of the Canopy theme.
+//
+// Canopy 3.7.2's `themes` entry defines its typography with the Material 14 level names
+// ($display-4, $headline, ...) which mat.define-typography-config no longer accepts on 16, so
+// `@include canopy.theme()` fails to compile here. Until Canopy 4 (CNPY-2140) we assemble the same
+// theme from Canopy's palettes and token layer, which are version neutral, and only the
+// typography config is ours. Keep the two in step: if _palettes.scss changes in Canopy, this file
+// picks it up automatically; if the type scale changes, update the levels below. LDG-1187.
+@use '@angular/material' as mat;
+@use '../../node_modules/@meridian/canopy-ui/themes/palettes' as p;
+@use '../../node_modules/@meridian/canopy-ui/tokens/typography' as t;
+@use '../../node_modules/@meridian/canopy-ui/tokens/css-vars' as vars;
+
+$ldg-typography: mat.define-typography-config(
+  $font-family: t.$cn-font-family,
+  $headline-4: mat.define-typography-level(t.$cn-font-size-4xl, 56px, t.$cn-font-weight-regular, $letter-spacing: -0.02em),
+  $headline-5: mat.define-typography-level(t.$cn-font-size-2xl, 36px, t.$cn-font-weight-semibold),
+  $headline-6: mat.define-typography-level(t.$cn-font-size-xl, 30px, t.$cn-font-weight-semibold),
+  $subtitle-1: mat.define-typography-level(t.$cn-font-size-md, 24px, t.$cn-font-weight-medium),
+  $subtitle-2: mat.define-typography-level(t.$cn-font-size-sm, 22px, t.$cn-font-weight-medium),
+  $body-1: mat.define-typography-level(t.$cn-font-size-md, 24px, t.$cn-font-weight-regular),
+  $body-2: mat.define-typography-level(t.$cn-font-size-sm, 20px, t.$cn-font-weight-regular),
+  $caption: mat.define-typography-level(t.$cn-font-size-xs, 18px, t.$cn-font-weight-regular),
+  $button: mat.define-typography-level(t.$cn-font-size-sm, 20px, t.$cn-font-weight-medium)
+);
+
+$ldg-light-theme: mat.define-light-theme((
+  color: (primary: p.$cn-primary, accent: p.$cn-accent, warn: p.$cn-warn),
+  typography: $ldg-typography,
+  density: -1
+));
+
+$ldg-dark-theme: mat.define-dark-theme((
+  color: (primary: p.$cn-primary-dark, accent: p.$cn-accent-dark, warn: p.$cn-warn-dark),
+  typography: $ldg-typography,
+  density: -1
+));
+
+@mixin theme {
+  @include mat.core();
+  @include mat.all-component-themes($ldg-light-theme);
+
+  :root,
+  html.cn-theme-light {
+    @include vars.emit-light;
+    color-scheme: light;
+  }
+
+  html.cn-theme-dark {
+    @include mat.all-component-colors($ldg-dark-theme);
+    @include vars.emit-dark;
+    color-scheme: dark;
+  }
+
+  // Canopy 3.7 only styles legacy (non MDC) form fields; these are the two overrides from its
+  // component-overrides mixin that still matter on 16.
+  .mat-mdc-form-field-appearance-outline .mdc-notched-outline__leading,
+  .mat-mdc-form-field-appearance-outline .mdc-notched-outline__notch,
+  .mat-mdc-form-field-appearance-outline .mdc-notched-outline__trailing {
+    border-color: var(--cn-color-border-strong);
+  }
+
+  .mat-mdc-card {
+    border-radius: 8px;
+    box-shadow: var(--cn-shadow-1) !important;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--cn-font-family);
+    color: var(--cn-color-text);
+    background: var(--cn-color-surface-alt);
+  }
+}

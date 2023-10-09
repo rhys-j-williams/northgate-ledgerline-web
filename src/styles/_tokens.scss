@@ -1,0 +1,8 @@
+// Ledgerline specific tokens layered over Canopy's. Keep this short; if it grows, it belongs in Canopy.
+:root {
+  --ldg-color-positive: #1e7b4f;
+  --ldg-color-negative: #b3261e;
+  --ldg-color-cutoff: #b35c00;
+  --ldg-grid-gap: 16px;
+  --ldg-tile-min: 220px;
+}
