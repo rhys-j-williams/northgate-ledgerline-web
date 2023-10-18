@@ -10,5 +10,8 @@
 /checkmarx.yml                   @meridian/treasury-digital @meridian/gis-appsec
 /SECURITY.md                     @meridian/gis-appsec
 /.npmrc                          @meridian/treasury-digital @meridian/gis-appsec
+# Patched third-party code counts as first-party under GIS-STD-014 s7.3 (LDG-1187).
+/patches/                        @meridian/treasury-digital @meridian/gis-appsec @meridian/canopy-design-system
+/src/app/canopy-compat/          @meridian/treasury-digital @meridian/canopy-design-system
 
 /docs/adr/                       @meridian/cswt-architecture
