@@ -1,0 +1,22 @@
+<div class="ldg-filters" role="group" aria-label="Approval filters">
+  <div class="ldg-filters__group">
+    <span class="ldg-filters__label" id="ldg-approvals-status-label">Status</span>
+    <ldg-filter-chips [chips]="statusChips" [multiple]="true" ariaLabel="Status" [ngModel]="store.statusFilter()"
+                      (selectionChange)="onStatus($event)"></ldg-filter-chips>
+  </div>
+  <div class="ldg-filters__group">
+    <span class="ldg-filters__label">Rail</span>
+    <ldg-filter-chips [chips]="railChips()" [multiple]="true" ariaLabel="Payment rail" [ngModel]="store.railFilter()"
+                      (selectionChange)="onRail($event)"></ldg-filter-chips>
+  </div>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic" class="ldg-filters__search">
+    <mat-label>Search beneficiary, account or payment id</mat-label>
+    <input matInput type="search" [ngModel]="store.search()" (ngModelChange)="store.search.set($event)" autocomplete="off">
+  </mat-form-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Sort</mat-label>
+    <mat-select [ngModel]="store.sort()" (ngModelChange)="store.sort.set($event)">
+      <mat-option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

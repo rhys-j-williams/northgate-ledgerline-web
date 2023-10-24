@@ -1,0 +1,27 @@
+<cn-page-header title="Payment approvals" eyebrow="Payments"
+                lede="Payments waiting on a second approver. Wires and RTP release on approval; ACH releases at the next window.">
+  <cn-button cnPageAction variant="secondary" icon="cn:arrow-down" [loading]="store.loading()" (pressed)="store.load()">Refresh</cn-button>
+</cn-page-header>
+
+<div class="ldg-grid ldg-approvals__kpis">
+  <ldg-kpi-tile label="Awaiting approval" [value]="store.pendingCount().toString()" [highlight]="store.pendingCount() > 0"></ldg-kpi-tile>
+  <ldg-kpi-tile label="Cutoff at risk" [value]="store.cutoffAtRiskCount().toString()"
+                [trend]="store.cutoffAtRiskCount() ? 'down' : 'flat'" hint="Next cutoff 16:30 ET wires"></ldg-kpi-tile>
+  <ldg-kpi-tile label="Pending value" [value]="store.pendingTotalMinor() | minorAmount:'USD':'compact'"></ldg-kpi-tile>
+</div>
+
+<ldg-approvals-filters></ldg-approvals-filters>
+
+<ldg-loading-state *ngIf="store.loading() && !store.approvals().length" [rows]="6"></ldg-loading-state>
+<ldg-error-state *ngIf="store.error() as error" [error]="error" (retry)="store.load()"></ldg-error-state>
+
+<ng-container *ngIf="!store.loading() && !store.error()">
+  <ldg-approvals-table *ngIf="store.visible().length; else empty" [rows]="store.visible()" [decidingId]="store.deciding()"
+                       (openApproval)="open($event)"></ldg-approvals-table>
+  <ng-template #empty>
+    <ldg-empty-state title="Nothing matches these filters"
+                     body="Either the queue is clear or the filters are too narrow. The badge in the navigation shows the live pending count.">
+      <cn-button variant="tertiary" (pressed)="store.clearFilters()">Reset filters</cn-button>
+    </ldg-empty-state>
+  </ng-template>
+</ng-container>

@@ -1,0 +1,28 @@
+<cn-data-table data-test="approvals-table" [columns]="columns" [rows]="rows" caption="Payment approvals queue" [trackBy]="trackById" [rowClass]="rowClass"
+               [pageSize]="25" [pageSizeOptions]="[25, 50, 100]" emptyText="No approvals" (rowClick)="openApproval.emit($event)">
+  <ng-template cnColumnDef="beneficiaryName" let-row>
+    <div class="ldg-approvals__beneficiary">
+      <span>{{ row.beneficiaryName }}</span>
+      <span class="ldg-muted ldg-approvals__sub">…{{ row.beneficiaryAccountLastFour }} · {{ row.paymentId }}</span>
+      <ldg-approval-risk-flags *ngIf="row.riskFlags.length" [flags]="row.riskFlags" compact></ldg-approval-risk-flags>
+    </div>
+  </ng-template>
+  <ng-template cnColumnDef="rail" let-row>
+    <ldg-status-badge [status]="row.rail" size="small"></ldg-status-badge>
+  </ng-template>
+  <ng-template cnColumnDef="amountMinor" let-row>
+    <span class="ldg-num">{{ row.amountMinor | minorAmount:row.currency }}</span>
+  </ng-template>
+  <ng-template cnColumnDef="cutoffAt" let-row>
+    <div class="ldg-approvals__cutoff">
+      <span>{{ row.cutoffAt | date:'MMM d, HH:mm' }}</span>
+      <ldg-cutoff-countdown *ngIf="row.status === 'pending'" class="ldg-approvals__sub" [cutoffAt]="row.cutoffAt"></ldg-cutoff-countdown>
+    </div>
+  </ng-template>
+  <ng-template cnColumnDef="approvalsGiven" let-row>
+    <span class="ldg-num" [attr.aria-label]="row.approvalsGiven.length + ' of ' + row.approvalsRequired + ' approvals'">{{ row.approvalsGiven.length }} / {{ row.approvalsRequired }}</span>
+  </ng-template>
+  <ng-template cnColumnDef="status" let-row>
+    <ldg-status-badge [status]="row.status" [dot]="true"></ldg-status-badge>
+  </ng-template>
+</cn-data-table>
