@@ -1,0 +1,52 @@
+<ldg-loading-state *ngIf="loading() && !approval()" [rows]="4"></ldg-loading-state>
+<ldg-error-state *ngIf="error() as err" [error]="err" (retry)="load()"></ldg-error-state>
+
+<ng-container *ngIf="approval() as a">
+  <cn-page-header data-test="approval-detail" [title]="a.beneficiaryName" [eyebrow]="a.paymentId" [compact]="true" backLink="/approvals" backLabel="Back to queue"
+                  [breadcrumbs]="[{ label: 'Approvals', link: '/approvals' }, { label: a.paymentId }]">
+    <cn-button cnPageAction variant="destructive" icon="cn:close" [disabled]="!decidable() || busy()" (pressed)="decide('reject')">Reject</cn-button>
+    <cn-button cnPageAction variant="primary" icon="cn:check" [loading]="busy()" [disabled]="!decidable()" (pressed)="decide('approve')">Approve</cn-button>
+    <div class="ldg-row">
+      <ldg-status-badge [status]="a.status" [dot]="true"></ldg-status-badge>
+      <ldg-status-badge [status]="a.rail"></ldg-status-badge>
+      <ldg-status-badge *ngIf="a.urgency !== 'standard'" [status]="a.urgency"></ldg-status-badge>
+      <span class="ldg-muted" *ngIf="a.status === 'pending'"><ldg-cutoff-countdown [cutoffAt]="a.cutoffAt"></ldg-cutoff-countdown></span>
+    </div>
+  </cn-page-header>
+
+  <p class="ldg-approval-detail__notice" role="note" *ngIf="isOwnPayment()">You initiated this payment, so you cannot approve it. Another approver in {{ a.organisationId }} needs to pick it up.</p>
+  <p class="ldg-approval-detail__notice" role="note" *ngIf="alreadyApproved() && a.status === 'pending'">You have already approved this payment. It is waiting on one more approver.</p>
+
+  <div class="ldg-grid ldg-approval-detail">
+    <cn-card title="Payment">
+      <dl class="ldg-dl">
+        <dt>Amount</dt><dd class="ldg-num ldg-approval-detail__amount">{{ a.amountMinor | minorAmount:a.currency }}</dd>
+        <dt>From</dt><dd>{{ a.debitAccountNickname }}</dd>
+        <dt>Value date</dt><dd>{{ a.valueDate | date:'fullDate' }}</dd>
+        <dt>Cutoff</dt><dd>{{ a.cutoffAt | date:'medium' }}</dd>
+        <dt>Memo</dt><dd>{{ a.memo || '—' }}</dd>
+      </dl>
+    </cn-card>
+    <cn-card title="Beneficiary">
+      <dl class="ldg-dl">
+        <dt>Name</dt><dd>{{ a.beneficiaryName }}</dd>
+        <dt>Account</dt><dd class="ldg-num">…{{ a.beneficiaryAccountLastFour }}</dd>
+        <dt>Routing</dt><dd class="ldg-num">{{ a.beneficiaryRoutingNumber }}</dd>
+      </dl>
+      <ldg-approval-risk-flags *ngIf="a.riskFlags.length" [flags]="a.riskFlags"></ldg-approval-risk-flags>
+    </cn-card>
+    <cn-card title="Approval trail">
+      <dl class="ldg-dl">
+        <dt>Initiated by</dt><dd>{{ a.initiatedBy }} <span class="ldg-muted">{{ a.initiatedAt | relativeTime }}</span></dd>
+        <dt>Required</dt><dd>{{ a.approvalsRequired }} approvals</dd>
+        <dt>Given</dt>
+        <dd>
+          <ul class="ldg-approval-detail__approvers" *ngIf="a.approvalsGiven.length; else none">
+            <li *ngFor="let handle of a.approvalsGiven">{{ handle }}</li>
+          </ul>
+          <ng-template #none><span class="ldg-muted">None yet</span></ng-template>
+        </dd>
+      </dl>
+    </cn-card>
+  </div>
+</ng-container>
