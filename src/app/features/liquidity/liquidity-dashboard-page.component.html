@@ -1,0 +1,19 @@
+<cn-page-header title="Liquidity" eyebrow="Treasury" [lede]="snapshot() ? 'Positions as of ' + (snapshot()!.asOf | relativeTime) + '. Balances are intraday and unaudited.' : null">
+  <cn-button cnPageAction variant="secondary" icon="cn:arrow-down" [loading]="loading()" (pressed)="load()">Refresh</cn-button>
+</cn-page-header>
+
+<ldg-dashboard-filters [currencies]="currencies()"></ldg-dashboard-filters>
+
+<ldg-loading-state *ngIf="loading() && !snapshot()" [rows]="5"></ldg-loading-state>
+<ldg-error-state *ngIf="error() as err" [error]="err" (retry)="load()"></ldg-error-state>
+
+<div class="ldg-stack" *ngIf="snapshot()">
+  <ldg-position-summary-tiles data-test="liquidity-tiles" [positions]="positions()" [view]="filters.balanceView()"></ldg-position-summary-tiles>
+  <div class="ldg-dashboard__main">
+    <div class="ldg-stack">
+      <ldg-positions-table [positions]="positions()" [view]="filters.balanceView()"></ldg-positions-table>
+      <ldg-cash-forecast-chart [points]="forecast()" [horizon]="filters.horizon()"></ldg-cash-forecast-chart>
+    </div>
+    <ldg-fx-rates-panel></ldg-fx-rates-panel>
+  </div>
+</div>
