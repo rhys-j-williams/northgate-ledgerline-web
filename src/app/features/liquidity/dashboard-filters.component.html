@@ -1,0 +1,28 @@
+<div class="ldg-filters" role="group" aria-label="Dashboard filters">
+  <div class="ldg-filters__group">
+    <span class="ldg-filters__label">Bucket</span>
+    <ldg-filter-chips [chips]="bucketChips" [multiple]="true" ariaLabel="Account bucket" [ngModel]="filters.buckets()"
+                      (selectionChange)="onBuckets($event)"></ldg-filter-chips>
+  </div>
+  <div class="ldg-filters__group" *ngIf="showCurrency()">
+    <span class="ldg-filters__label">Currency</span>
+    <ldg-filter-chips [chips]="currencyChips()" ariaLabel="Currency" [ngModel]="filters.currency()" [showClear]="false"
+                      (selectionChange)="onCurrency($event)"></ldg-filter-chips>
+  </div>
+  <div class="ldg-filters__group">
+    <span class="ldg-filters__label" id="ldg-balance-view-label">Balance</span>
+    <mat-button-toggle-group aria-labelledby="ldg-balance-view-label" [value]="filters.balanceView()" (change)="onView($event.value)">
+      <mat-button-toggle value="available">Available</mat-button-toggle>
+      <mat-button-toggle value="ledger">Ledger</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="ldg-filters__group">
+    <span class="ldg-filters__label" id="ldg-horizon-label">Forecast</span>
+    <mat-button-toggle-group aria-labelledby="ldg-horizon-label" [value]="filters.horizon()" (change)="onHorizon($event.value)">
+      <mat-button-toggle [value]="7">7 days</mat-button-toggle>
+      <mat-button-toggle [value]="14">14 days</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <mat-slide-toggle [checked]="filters.hideZero()" (change)="filters.hideZero.set($event.checked)">Hide zero balances</mat-slide-toggle>
+  <cn-button *ngIf="filters.isFiltered()" variant="tertiary" size="small" (pressed)="filters.reset()">Reset</cn-button>
+</div>
