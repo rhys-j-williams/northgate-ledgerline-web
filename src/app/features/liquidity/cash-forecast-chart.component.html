@@ -1,0 +1,26 @@
+<cn-card class="ldg-forecast" title="Cash forecast" [subtitle]="horizonSignal() + ' day projected closing balance, confirmed flows shaded'">
+  <div class="ldg-forecast__chart" aria-hidden="true">
+    <div class="ldg-forecast__col" *ngFor="let bar of bars()">
+      <div class="ldg-forecast__bar" [style.height.%]="bar.projectedPct" [title]="(bar.point.date | date:'EEE d MMM') + ': ' + (bar.point.projectedMinor | minorAmount:'USD':'compact')">
+        <div class="ldg-forecast__bar--confirmed" [style.height.%]="bar.confirmedPct"></div>
+      </div>
+      <div class="ldg-forecast__label">{{ bar.point.date | date:'EEE d' }}</div>
+    </div>
+  </div>
+  <div class="ldg-forecast__legend">
+    <span><span class="ldg-forecast__swatch" style="background: var(--cn-color-border-strong)"></span>Projected</span>
+    <span><span class="ldg-forecast__swatch" style="background: var(--cn-color-primary)"></span>Confirmed</span>
+    <span class="ldg-muted" *ngIf="lowPoint() as low">Low point {{ low.date | date:'EEE d MMM' }}: {{ low.projectedMinor | minorAmount:'USD':'compact' }}</span>
+  </div>
+  <table class="ldg-forecast__table">
+    <caption>Cash forecast by day</caption>
+    <thead><tr><th scope="col">Date</th><th scope="col">Projected</th><th scope="col">Confirmed</th></tr></thead>
+    <tbody>
+      <tr *ngFor="let bar of bars()">
+        <th scope="row">{{ bar.point.date | date:'mediumDate' }}</th>
+        <td>{{ bar.point.projectedMinor | minorAmount:'USD' }}</td>
+        <td>{{ bar.point.confirmedMinor | minorAmount:'USD' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</cn-card>
