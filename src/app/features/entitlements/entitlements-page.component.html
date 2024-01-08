@@ -1,0 +1,27 @@
+<cn-page-header title="User entitlements" eyebrow="Administration"
+                lede="Who can see, initiate and approve for this organisation. Changes take effect at the user's next sign in.">
+</cn-page-header>
+
+<p class="ldg-entitlements__notice" role="note" *ngIf="dualApprovalGaps() > 0">
+  {{ dualApprovalGaps() }} payment {{ dualApprovalGaps() === 1 ? 'user does' : 'users do' }} not require dual approval. Policy TRS-014 expects dual approval on all treasury payment roles.
+</p>
+
+<div class="ldg-filters" role="group" aria-label="Entitlement filters">
+  <div class="ldg-filters__group">
+    <span class="ldg-filters__label">Role</span>
+    <ldg-filter-chips [chips]="roleChips()" [multiple]="true" ariaLabel="Role" [ngModel]="roles()" (selectionChange)="roles.set($event)"></ldg-filter-chips>
+  </div>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Search user</mat-label>
+    <input matInput type="search" [ngModel]="search()" (ngModelChange)="search.set($event)" autocomplete="off">
+  </mat-form-field>
+</div>
+
+<ldg-loading-state *ngIf="loading()" [rows]="6"></ldg-loading-state>
+<ldg-error-state *ngIf="error() as err" [error]="err" (retry)="load()"></ldg-error-state>
+<ng-container *ngIf="!loading() && !error()">
+  <ldg-entitlements-table *ngIf="visible().length; else empty" [rows]="visible()" (openEntitlement)="open($event)"></ldg-entitlements-table>
+  <ng-template #empty>
+    <ldg-empty-state title="No users match" body="Try a different role or clear the search." icon="cn:user"></ldg-empty-state>
+  </ng-template>
+</ng-container>
