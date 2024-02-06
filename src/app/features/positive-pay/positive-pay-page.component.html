@@ -1,0 +1,22 @@
+<cn-page-header title="Positive pay exceptions" eyebrow="Fraud controls"
+                lede="Cheques presented against the issue file that did not match. Undecided items default to return at the 14:00 ET cutoff.">
+</cn-page-header>
+
+<div class="ldg-grid">
+  <ldg-kpi-tile label="Open exceptions" [value]="open().length.toString()" [highlight]="open().length > 0"></ldg-kpi-tile>
+  <ldg-kpi-tile label="Presented value" [value]="openTotalMinor() | minorAmount:'USD':'compact'"></ldg-kpi-tile>
+  <ldg-kpi-tile label="Decision cutoff" [value]="nextCutoff() ? (nextCutoff()! | date:'HH:mm') + ' ET' : '—'" hint="Bank returns undecided items"></ldg-kpi-tile>
+</div>
+
+<ldg-exception-decision-bar [reasonFilter]="reasonFilter()" [selectedCount]="selectedOpen().length" [canDecide]="canDecide() && bulkEnabled" [busy]="deciding()"
+                            (reasonFilterChange)="reasonFilter.set($event)" (decide)="decide(selectedOpen(), $event.decision, $event.note)"></ldg-exception-decision-bar>
+
+<ldg-loading-state *ngIf="loading()" [rows]="6"></ldg-loading-state>
+<ldg-error-state *ngIf="error() as err" [error]="err" (retry)="load()"></ldg-error-state>
+<ng-container *ngIf="!loading() && !error()">
+  <ldg-exceptions-table *ngIf="visible().length; else empty" [rows]="visible()" [selectable]="canDecide() && bulkEnabled"
+                        (selectionChange)="selected.set($event)" (openException)="detail($event)"></ldg-exceptions-table>
+  <ng-template #empty>
+    <ldg-empty-state title="No exceptions" body="Every presented item matched the issue file, or the filters exclude the rest."></ldg-empty-state>
+  </ng-template>
+</ng-container>
