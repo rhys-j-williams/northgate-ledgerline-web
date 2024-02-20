@@ -1,0 +1,18 @@
+<cn-page-header title="Audit" eyebrow="Compliance" lede="Every entitlement, payment and positive pay decision in this organisation, with the actor and correlation id. Retained seven years.">
+  <ldg-audit-export-button *ngIf="exportEnabled" cnPageAction [query]="query()" [total]="total()"></ldg-audit-export-button>
+</cn-page-header>
+
+<ldg-audit-filters [query]="query()" (queryChange)="onQuery($event)"></ldg-audit-filters>
+
+<ldg-error-state *ngIf="error() as err" [error]="err" (retry)="retry()"></ldg-error-state>
+
+<div class="ldg-audit__layout" [class.ldg-audit__layout--with-detail]="selected()" *ngIf="!error()">
+  <div>
+    <ldg-loading-state *ngIf="loading() && !events().length" [rows]="8"></ldg-loading-state>
+    <ldg-audit-table *ngIf="events().length" [rows]="events()" [selectedId]="selected()?.eventId ?? null" [loading]="loading()"
+                     [page]="page()" [pageCount]="pageCount()" [total]="total()" [pageSize]="pageSize"
+                     (rowSelect)="selected.set($event)" (pageChange)="page.set($event)"></ldg-audit-table>
+    <ldg-empty-state *ngIf="!loading() && !events().length" title="No events in this range" body="Widen the date range or clear the actor filter." icon="cn:document"></ldg-empty-state>
+  </div>
+  <ldg-audit-event-detail *ngIf="selected() as event" [event]="event" (closed)="selected.set(null)"></ldg-audit-event-detail>
+</div>
