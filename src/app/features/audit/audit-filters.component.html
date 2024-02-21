@@ -1,0 +1,24 @@
+<form class="ldg-filters" [formGroup]="form" role="search" aria-label="Audit filters">
+  <div class="ldg-filters__group">
+    <span class="ldg-filters__label">Category</span>
+    <ldg-filter-chips [chips]="categoryChips" [multiple]="true" ariaLabel="Event category" formControlName="categories"></ldg-filter-chips>
+  </div>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate formControlName="from" placeholder="From">
+      <input matEndDate formControlName="to" placeholder="To">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Actor</mat-label>
+    <input matInput formControlName="actor" autocomplete="off">
+  </mat-form-field>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Search action, subject or correlation id</mat-label>
+    <input matInput type="search" formControlName="text" autocomplete="off">
+  </mat-form-field>
+  <cn-button variant="tertiary" size="small" type="button" (pressed)="reset()">Clear</cn-button>
+</form>
