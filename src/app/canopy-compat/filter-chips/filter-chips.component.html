@@ -1,0 +1,14 @@
+<mat-chip-listbox class="cn-filter-chips__list" [attr.aria-label]="ariaLabel" [multiple]="multiple"
+                  [selectable]="true" [disabled]="disabled" [value]="multiple ? selected : selected[0] ?? null"
+                  (change)="onListboxChange($event)">
+  <mat-chip-option *ngFor="let chip of chips; trackBy: trackByValue" class="cn-filter-chips__chip"
+                   [value]="chip.value" [selected]="isSelected(chip)" [disabled]="chip.disabled || disabled"
+                   [selectable]="true">
+    <mat-icon *ngIf="chip.icon" matChipAvatar [svgIcon]="isSvgIcon(chip.icon) ? chip.icon : ''" aria-hidden="true">{{ isSvgIcon(chip.icon) ? '' : chip.icon }}</mat-icon>
+    <span class="cn-filter-chips__label">{{ chip.label }}</span>
+    <span class="cn-filter-chips__count" *ngIf="showCounts && chip.count !== undefined">{{ chip.count }}</span>
+  </mat-chip-option>
+</mat-chip-listbox>
+<button *ngIf="showClear && selected.length" type="button" class="cn-filter-chips__clear" mat-button (click)="clear()">
+  <mat-icon svgIcon="cn:close" aria-hidden="true"></mat-icon> Clear
+</button>

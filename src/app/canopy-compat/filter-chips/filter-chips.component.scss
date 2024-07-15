@@ -1,0 +1,78 @@
+// Mirrors filter-chips.component.scss in canopy-ui 3.7.2, retargeted from .mat-chip / .mat-standard-chip
+// to the MDC class names. Keep the two in step until this directory goes (LDG-1187).
+.ldg-filter-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  .cn-filter-chips__list .mdc-evolution-chip-set__chips {
+    gap: 8px;
+    margin: 0;
+    align-items: center;
+  }
+
+  .mat-mdc-chip.mat-mdc-standard-chip {
+    margin: 0;
+    min-height: 32px;
+    border-radius: 16px;
+    background: var(--cn-color-surface);
+    border: 1px solid var(--cn-color-border-strong);
+    color: var(--cn-color-text);
+    font-weight: 500;
+    font-size: 13px;
+
+    --mdc-chip-elevated-container-color: var(--cn-color-surface);
+    --mdc-chip-elevated-selected-container-color: var(--cn-color-primary);
+    --mdc-chip-label-text-color: var(--cn-color-text);
+    --mdc-chip-selected-label-text-color: var(--cn-color-primary-contrast);
+    --mdc-chip-with-icon-selected-icon-color: var(--cn-color-primary-contrast);
+  }
+
+  .mat-mdc-chip.mat-mdc-standard-chip.mat-mdc-chip-selected {
+    border-color: var(--cn-color-primary);
+
+    .cn-filter-chips__count {
+      background: rgba(255, 255, 255, 0.22);
+      color: inherit;
+    }
+  }
+
+  .mat-mdc-chip.cdk-keyboard-focused .mat-mdc-chip-focus-overlay {
+    opacity: 0;
+  }
+
+  .mat-mdc-chip.cdk-keyboard-focused {
+    outline: var(--cn-focus-ring, 3px solid #2f7bd1);
+    outline-offset: 1px;
+  }
+
+  .mat-mdc-chip-avatar.mat-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+  }
+
+  .cn-filter-chips__count {
+    margin-left: 8px;
+    padding: 0 8px;
+    border-radius: 10px;
+    background: var(--cn-color-surface-alt);
+    color: var(--cn-color-text-muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cn-filter-chips__clear.mat-mdc-button {
+    min-height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+    color: var(--cn-color-text-muted);
+
+    .mat-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+    }
+  }
+}
