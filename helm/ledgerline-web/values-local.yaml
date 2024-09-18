@@ -1,0 +1,7 @@
+# kind on a laptop. Everything on localhost via port-forward; the mocks come from mock-external/estate-up.sh.
+env:
+  environment: local
+  apiBaseUrl: http://localhost:4501/api
+  marketsBaseUrl: http://localhost:4602/v1
+nginx:
+  cspConnectSrc: "'self' http://localhost:4501 http://localhost:4602"

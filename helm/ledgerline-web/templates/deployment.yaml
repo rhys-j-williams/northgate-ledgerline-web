@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ldg.name" . }}
+  labels:
+    {{- include "ldg.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "ldg.name" . }}
+  template:
+    metadata:
+      labels:
+        {{- include "ldg.labels" . | nindent 8 }}
+      annotations:
+        checksum/env: {{ .Values.env | toJson | sha256sum }}
+    spec:
+      containers:
+        - name: web
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          env:
+            - name: CSP_CONNECT_SRC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "ldg.name" . }}-env
+                  key: CSP_CONNECT_SRC
+          volumeMounts:
+            - name: env
+              mountPath: /opt/app-root/src/env.json
+              subPath: env.json
+              readOnly: true
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.probes.path }}
+              port: {{ .Values.service.port }}
+            initialDelaySeconds: {{ .Values.probes.initialDelaySeconds }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.probes.path }}
+              port: {{ .Values.service.port }}
+            initialDelaySeconds: {{ add .Values.probes.initialDelaySeconds 20 }}
+            periodSeconds: 20
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+      volumes:
+        - name: env
+          configMap:
+            name: {{ include "ldg.name" . }}-env

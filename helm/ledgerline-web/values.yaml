@@ -1,0 +1,28 @@
+replicaCount: 1
+image:
+  repository: registry.meridian.internal/cswt/ledgerline-web
+  tag: "2024.11.3"
+  pullPolicy: IfNotPresent
+service:
+  port: 8080
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    memory: 128Mi
+probes:
+  path: /healthz
+  initialDelaySeconds: 5
+# Rendered into env.json. Keys are the shared front-end chart's, mapped in src/app/core/config/runtime-config.ts.
+env:
+  environment: kind
+  apiBaseUrl: http://bff-business:4501/api
+  marketsBaseUrl: http://tickerhaus-mock:4602/v1
+  sessionTimeoutMinutes: 15
+  featureFlags:
+    positivePayBulkDecision: true
+    auditExport: true
+    fxStreaming: false
+nginx:
+  cspConnectSrc: "'self' http://bff-business:4501 http://tickerhaus-mock:4602"
