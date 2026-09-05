@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpInterceptorFn, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -20,7 +20,7 @@ import { LdgEnvironment } from '../environments/environment.model';
  * BFF) both see it; the error interceptor wraps everything below it; the fixture backend is last
  * because it short-circuits the request when APP_CONFIG.fixtureBackend is on.
  */
-const interceptorsFor = (config: LdgEnvironment) => [
+const interceptorsFor = (config: LdgEnvironment): HttpInterceptorFn[] => [
   correlationIdInterceptor,
   errorInterceptor,
   ...(config.fixtureBackend ? [fixtureBackendInterceptor] : [])
