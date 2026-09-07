@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import type { Entitlement } from '@meridian/domain-fixtures';
+import type { Entitlement } from '@northgate/domain-fixtures';
 
 import { EntitlementLimitUpdate } from '../../core/api/entitlements.api';
 import { provideFixtureBackend } from '../../testing/fixture-backend-testing';

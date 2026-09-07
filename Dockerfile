@@ -12,8 +12,8 @@
 ARG NODE_VERSION=18.19.0
 ARG NGINX_TAG=1-30
 
-FROM artifactory.meridian.internal/docker-remote/library/node:${NODE_VERSION}-bullseye-slim AS build
-ARG NPM_REGISTRY=https://artifactory.meridian.internal/artifactory/api/npm/npm-virtual/
+FROM artifactory.northgate.internal/docker-remote/library/node:${NODE_VERSION}-bullseye-slim AS build
+ARG NPM_REGISTRY=https://artifactory.northgate.internal/artifactory/api/npm/npm-virtual/
 ENV CI=true NG_CLI_ANALYTICS=false NODE_OPTIONS=--max-old-space-size=4096
 WORKDIR /workspace
 # .npmrc carries legacy-peer-deps for Canopy 3.7.2 (LDG-1187); patches/ must be present before
@@ -27,17 +27,17 @@ COPY ledgerline-web/ .
 RUN npx ng build --configuration production && \
     mkdir -p /out && cp -R dist/ledgerline-web/. /out/
 
-FROM artifactory.meridian.internal/docker-redhat-remote/ubi9/nginx-124:${NGINX_TAG} AS runtime
+FROM artifactory.northgate.internal/docker-redhat-remote/ubi9/nginx-124:${NGINX_TAG} AS runtime
 ARG BUILD_TAG=local
 ARG GIT_SHA=unknown
 LABEL org.opencontainers.image.title="ledgerline-web" \
-      org.opencontainers.image.vendor="Meridian Trust Bank, CSWT" \
+      org.opencontainers.image.vendor="Northgate Trust Bank, CSWT" \
       org.opencontainers.image.revision="${GIT_SHA}" \
       org.opencontainers.image.version="${BUILD_TAG}" \
-      meridian.bank/app="ledgerline-web" \
-      meridian.bank/team="treasury-digital" \
-      meridian.bank/base-image="ubi9/nginx-124" \
-      meridian.bank/scan-policy="GIS-STD-021"
+      northgate.bank/app="ledgerline-web" \
+      northgate.bank/team="treasury-digital" \
+      northgate.bank/base-image="ubi9/nginx-124" \
+      northgate.bank/scan-policy="GIS-STD-021"
 USER 0
 COPY platform-tooling/docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY platform-tooling/docker/nginx/security-headers.inc /etc/nginx/conf.d/security-headers.inc

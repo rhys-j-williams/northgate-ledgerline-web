@@ -1,6 +1,6 @@
 import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, Input, signal } from '@angular/core';
-import { CnCardModule } from '@meridian/canopy-ui/data-display';
+import { CnCardModule } from '@northgate/canopy-ui/data-display';
 
 import { CashForecastPoint } from '../../core/models/liquidity';
 import { MinorAmountPipe } from '../../shared/pipes/minor-amount.pipe';

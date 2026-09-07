@@ -5,7 +5,7 @@ runs. Owned by treasury-digital, reviewed by #canopy-design-system when anything
 
 | Component | Replaces | Why | Remove when |
 |---|---|---|---|
-| `ldg-filter-chips` | `cn-filter-chips` (`@meridian/canopy-ui/data-display` 3.7.2) | Compiled against Material 14 `mat-chip-list`; symbol removed in Material 15 MDC chips | Canopy 4.x on Angular 16+ (CNPY-2140), tracked here as LDG-1187 |
+| `ldg-filter-chips` | `cn-filter-chips` (`@northgate/canopy-ui/data-display` 3.7.2) | Compiled against Material 14 `mat-chip-list`; symbol removed in Material 15 MDC chips | Canopy 4.x on Angular 16+ (CNPY-2140), tracked here as LDG-1187 |
 
 Rules for this directory, agreed with Canopy in the 2024-02 design system sync:
 

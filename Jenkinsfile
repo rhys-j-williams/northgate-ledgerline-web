@@ -1,12 +1,12 @@
 #!/usr/bin/env groovy
-// ledgerline-web. Owner @meridian/treasury-digital. Pipeline questions to #platform-engineering.
+// ledgerline-web. Owner @northgate/treasury-digital. Pipeline questions to #platform-engineering.
 //
 // Jest, not Karma, so no CHROME_BIN dance and no ChromeHeadlessCI launcher; the shared library's
 // default testCommand assumes Karma and is overridden below. Cypress runs in a post-build stage
 // because the shared pipeline has no e2e hook yet (TOOL-1207, open since 2024-03).
-@Library('meridian-pipeline@v3') _
+@Library('northgate-pipeline@v3') _
 
-meridianNodePipeline(
+northgateNodePipeline(
     agentLabel:        'nodejs18-rhel9',
     nodeVersion:       '18.19.0',
     appName:           'ledgerline-web',

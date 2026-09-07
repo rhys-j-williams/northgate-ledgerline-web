@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { CnColumn, CnDataTableModule } from '@meridian/canopy-ui/data-display';
-import type { Entitlement } from '@meridian/domain-fixtures';
+import { CnColumn, CnDataTableModule } from '@northgate/canopy-ui/data-display';
+import type { Entitlement } from '@northgate/domain-fixtures';
 
 import { StatusBadgeComponent } from '../../shared/components';
 import { MinorAmountPipe } from '../../shared/pipes/minor-amount.pipe';

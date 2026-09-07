@@ -1,7 +1,7 @@
 import {
   Account, Customer, Entitlement, generateFixtures, maskAccountNumber, PAYEE_NAMES, SeededRandom,
   TEST_ROUTING_NUMBER
-} from '@meridian/domain-fixtures';
+} from '@northgate/domain-fixtures';
 import {
   AuditCategory, AuditEvent, AuditOutcome, CashForecastPoint, ExceptionReason, LiquidityPosition,
   PaymentApproval, PaymentRail, PositionBucket, PositivePayException, TreasurySession
@@ -31,7 +31,7 @@ export interface TreasuryDataset {
 
 const RAILS: PaymentRail[] = ['wire', 'wire', 'ach', 'ach', 'ach', 'rtp', 'book-transfer'];
 const BENEFICIARIES = [
-  ...PAYEE_NAMES.filter(name => !name.startsWith('Meridian')),
+  ...PAYEE_NAMES.filter(name => !name.startsWith('Northgate')),
   'Northgate Logistics LLC', 'Sable & Rourke Legal', 'Tiverton Packaging Co', 'Pinecrest Facilities Mgmt'
 ];
 const MEMOS = ['Q3 vendor settlement', 'Payroll funding', 'Lease - Denver site', 'Tax deposit',

@@ -7,9 +7,9 @@
 // typography config is ours. Keep the two in step: if _palettes.scss changes in Canopy, this file
 // picks it up automatically; if the type scale changes, update the levels below. LDG-1187.
 @use '@angular/material' as mat;
-@use '../../node_modules/@meridian/canopy-ui/themes/palettes' as p;
-@use '../../node_modules/@meridian/canopy-ui/tokens/typography' as t;
-@use '../../node_modules/@meridian/canopy-ui/tokens/css-vars' as vars;
+@use '../../node_modules/@northgate/canopy-ui/themes/palettes' as p;
+@use '../../node_modules/@northgate/canopy-ui/tokens/typography' as t;
+@use '../../node_modules/@northgate/canopy-ui/tokens/css-vars' as vars;
 
 $ldg-typography: mat.define-typography-config(
   $font-family: t.$cn-font-family,

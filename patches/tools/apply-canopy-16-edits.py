@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Regenerates the edits behind patches/@meridian+canopy-ui+3.7.2.patch.
+Regenerates the edits behind patches/@northgate+canopy-ui+3.7.2.patch.
 
-Run against a *clean* node_modules/@meridian/canopy-ui, then `npx patch-package @meridian/canopy-ui`.
+Run against a *clean* node_modules/@northgate/canopy-ui, then `npx patch-package @northgate/canopy-ui`.
 Kept so the patch can be rebuilt if Canopy ships a 3.7.x hotfix before CNPY-2140 lands. Do not run
 it against an already patched tree; the string replacements are not idempotent for the list template.
 
@@ -20,7 +20,7 @@ import json
 import pathlib
 import sys
 
-ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else 'node_modules/@meridian/canopy-ui')
+ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else 'node_modules/@northgate/canopy-ui')
 
 PEER_RANGES = {
     '@angular/animations': '^14.0.0 || ^15.0.0 || ^16.0.0',
@@ -76,15 +76,15 @@ def edit_chips(path: pathlib.Path) -> None:
 
 def main() -> None:
     edit_package_json()
-    edit_list_bundle(ROOT / 'fesm2020/meridian-canopy-ui-data-display.mjs', 'i2$3', 'i3$3')
-    edit_list_bundle(ROOT / 'fesm2015/meridian-canopy-ui-data-display.mjs', 'i2$3', 'i3$3')
+    edit_list_bundle(ROOT / 'fesm2020/northgate-canopy-ui-data-display.mjs', 'i2$3', 'i3$3')
+    edit_list_bundle(ROOT / 'fesm2015/northgate-canopy-ui-data-display.mjs', 'i2$3', 'i3$3')
     edit_list_bundle(ROOT / 'esm2020/data-display/list/list.component.mjs', 'i2', 'i3')
-    for rel in ('fesm2020/meridian-canopy-ui-data-display.mjs',
-                'fesm2015/meridian-canopy-ui-data-display.mjs',
+    for rel in ('fesm2020/northgate-canopy-ui-data-display.mjs',
+                'fesm2015/northgate-canopy-ui-data-display.mjs',
                 'esm2020/data-display/filter-chips/filter-chips.component.mjs',
                 'data-display/filter-chips/filter-chips.component.d.ts'):
         edit_chips(ROOT / rel)
-    print('canopy-ui 3.7.2 edited in place; now run: npx patch-package @meridian/canopy-ui')
+    print('canopy-ui 3.7.2 edited in place; now run: npx patch-package @northgate/canopy-ui')
 
 
 if __name__ == '__main__':

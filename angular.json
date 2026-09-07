@@ -52,11 +52,11 @@
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/styles",
-                "node_modules/@meridian/canopy-ui/styles"
+                "node_modules/@northgate/canopy-ui/styles"
               ]
             },
             "allowedCommonJsDependencies": [
-              "@meridian/domain-fixtures"
+              "@northgate/domain-fixtures"
             ]
           },
           "configurations": {
