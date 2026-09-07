@@ -2,16 +2,16 @@
 # Teams are defined in the CSWT organisation; membership changes go through the
 # access request process, not through this file.
 
-*                                @meridian/treasury-digital
+*                                @northgate/treasury-digital
 
 # Security sensitive paths. GIS-STD-014 requires an application security reviewer on all of these.
-/Dockerfile                      @meridian/treasury-digital @meridian/gis-appsec
-/Jenkinsfile                     @meridian/treasury-digital @meridian/gis-appsec
-/checkmarx.yml                   @meridian/treasury-digital @meridian/gis-appsec
-/SECURITY.md                     @meridian/gis-appsec
-/.npmrc                          @meridian/treasury-digital @meridian/gis-appsec
+/Dockerfile                      @northgate/treasury-digital @northgate/gis-appsec
+/Jenkinsfile                     @northgate/treasury-digital @northgate/gis-appsec
+/checkmarx.yml                   @northgate/treasury-digital @northgate/gis-appsec
+/SECURITY.md                     @northgate/gis-appsec
+/.npmrc                          @northgate/treasury-digital @northgate/gis-appsec
 # Patched third-party code counts as first-party under GIS-STD-014 s7.3 (LDG-1187).
-/patches/                        @meridian/treasury-digital @meridian/gis-appsec @meridian/canopy-design-system
-/src/app/canopy-compat/          @meridian/treasury-digital @meridian/canopy-design-system
+/patches/                        @northgate/treasury-digital @northgate/gis-appsec @northgate/canopy-design-system
+/src/app/canopy-compat/          @northgate/treasury-digital @northgate/canopy-design-system
 
-/docs/adr/                       @meridian/cswt-architecture
+/docs/adr/                       @northgate/cswt-architecture

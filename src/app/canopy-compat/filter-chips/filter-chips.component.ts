@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipListboxChange, MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 
-/** Same shape as CnFilterChip in @meridian/canopy-ui/data-display so call sites do not change. */
+/** Same shape as CnFilterChip in @northgate/canopy-ui/data-display so call sites do not change. */
 export interface LdgFilterChip<T = string> {
   value: T;
   label: string;

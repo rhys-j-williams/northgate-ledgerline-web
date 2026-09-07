@@ -1,5 +1,5 @@
 {
-  "name": "@meridian/ledgerline-web",
+  "name": "@northgate/ledgerline-web",
   "version": "2026.9.0",
   "description": "Ledgerline corporate treasury front end. Payment approvals, liquidity, entitlements, positive pay, audit.",
   "private": true,
@@ -39,8 +39,8 @@
     "@angular/platform-browser": "16.2.12",
     "@angular/platform-browser-dynamic": "16.2.12",
     "@angular/router": "16.2.12",
-    "@meridian/canopy-ui": "3.7.2",
-    "@meridian/domain-fixtures": "1.6.0",
+    "@northgate/canopy-ui": "3.7.2",
+    "@northgate/domain-fixtures": "1.6.0",
     "rxjs": "7.8.1",
     "tslib": "2.6.2",
     "zone.js": "0.13.3"

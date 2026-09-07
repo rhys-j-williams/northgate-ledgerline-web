@@ -14,7 +14,7 @@ stack. Test data was copy-pasted JSON that drifted from the wire shapes, and QE 
 defects in 2023 Q4 that were the fixture being wrong rather than the app (LDG-1041, LDG-1058,
 LDG-1066).
 
-`@meridian/domain-fixtures` had just gained the treasury segment (PLAT-1180): deterministic
+`@northgate/domain-fixtures` had just gained the treasury segment (PLAT-1180): deterministic
 customers, accounts, payments, entitlements and audit events from a seed, with the guarantees the
 data classification standard wants (Luhn-failing cards, test routing number, `@example.com`).
 

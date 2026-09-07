@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: registry.meridian.internal/cswt/ledgerline-web
+  repository: registry.northgate.internal/cswt/ledgerline-web
   tag: "2024.11.3"
   pullPolicy: IfNotPresent
 service:

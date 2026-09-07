@@ -1,7 +1,7 @@
 import { DatePipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { CnIconButtonModule } from '@meridian/canopy-ui/actions';
-import { CnCardModule } from '@meridian/canopy-ui/data-display';
+import { CnIconButtonModule } from '@northgate/canopy-ui/actions';
+import { CnCardModule } from '@northgate/canopy-ui/data-display';
 
 import { AuditEvent } from '../../core/models/audit';
 import { StatusBadgeComponent } from '../../shared/components';

@@ -5,8 +5,8 @@ import { provideRouter, Routes } from '@angular/router';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { of } from 'rxjs';
-import { CN_CONFIG, CN_DEFAULT_CONFIG, CnCoreModule } from '@meridian/canopy-ui/core';
-import { CnIconModule } from '@meridian/canopy-ui/icons';
+import { CN_CONFIG, CN_DEFAULT_CONFIG, CnCoreModule } from '@northgate/canopy-ui/core';
+import { CnIconModule } from '@northgate/canopy-ui/icons';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LdgEnvironment } from '@env/environment.model';
 

@@ -1,11 +1,11 @@
 # ledgerline-web
 
-Treasury workstation for Meridian Business corporate clients: payment approvals (maker/checker),
+Treasury workstation for Northgate Business corporate clients: payment approvals (maker/checker),
 intraday liquidity with TickerHaus FX, user entitlements, positive pay exceptions, audit history.
-Served at `/treasury` behind the business channel gateway. Owner `@meridian/treasury-digital`,
+Served at `/treasury` behind the business channel gateway. Owner `@northgate/treasury-digital`,
 Jersey City, with business-digital in Chennai covering the overnight rota. Ticket key `LDG`. Channel `#treasury-digital`.
 
-Not to be confused with `business-web`, which is the older Meridian Business portal on Angular 14
+Not to be confused with `business-web`, which is the older Northgate Business portal on Angular 14
 that this application was split out of in late 2023 (LDG-1001, the "carve-out"). Anything about
 ACH origination, wires or statements is still over there.
 
@@ -17,8 +17,8 @@ ACH origination, wires or statements is still over there.
 | Angular | 16.2.12 | CLI 16.2.16. Standalone throughout, no NgModules of our own. |
 | TypeScript | 5.1.6 | |
 | Angular Material / CDK | 16.2.14 | MDC components. |
-| `@meridian/canopy-ui` | 3.7.2 | Angular 14 peers. See "Canopy" below before you touch anything. |
-| `@meridian/domain-fixtures` | 1.6.0 | Treasury segment, drives the fixture backend and every test. |
+| `@northgate/canopy-ui` | 3.7.2 | Angular 14 peers. See "Canopy" below before you touch anything. |
+| `@northgate/domain-fixtures` | 1.6.0 | Treasury segment, drives the fixture backend and every test. |
 | Jest | 29.7 via `jest-preset-angular` 13.1.4 | Not Karma. `npx jest`. |
 | Cypress | 13.6.6 + `cypress-axe` | Two headless axe-core specs, WCAG 2.1 AA tags. |
 | ESLint | 8.56 + angular-eslint 16 | `npx eslint .` |
@@ -46,7 +46,7 @@ Three serve configurations:
 
 - `development` (default): `fixtureBackend: true`. Every request to the BFF and TickerHaus base
   URLs is answered in the browser by `src/app/core/fixture-backend/` from a deterministic
-  `@meridian/domain-fixtures` dataset, seed `ledgerline`, ~120 ms latency. This is how most people
+  `@northgate/domain-fixtures` dataset, seed `ledgerline`, ~120 ms latency. This is how most people
   work day to day because bff-business needs the Bedrock stubs and half the platform-services stack.
 - `mock-external`: `fixtureBackend: false`, points at 4501 and 4602 from `mock-external/estate-up.sh`
   (or the real bff-business from `platform-services/`). Contract drift note: bff-business today
@@ -93,12 +93,12 @@ ADR-0001 and not reopened since.
 
 ## Canopy
 
-`@meridian/canopy-ui@3.7.2` declares Angular 14 peer dependencies. We are on 16. Canopy 4 (Angular
+`@northgate/canopy-ui@3.7.2` declares Angular 14 peer dependencies. We are on 16. Canopy 4 (Angular
 16+, CNPY-2140) has been "next quarter" since Q1 2024. In the meantime:
 
 1. `.npmrc` has `legacy-peer-deps=true` so `npm ci` installs at all. This is the *only* reason it
    is there; do not lean on it for anything else.
-2. `patches/@meridian+canopy-ui+3.7.2.patch` is applied by `patch-package` in `postinstall`. It
+2. `patches/@northgate+canopy-ui+3.7.2.patch` is applied by `patch-package` in `postinstall`. It
    widens the peer ranges and rewrites the compiled `cn-list` template from the Material 14 list
    directives to the MDC ones, plus one symbol rename so the bundle links. Details, ownership and
    the removal condition are in `patches/README.md`. If `npm ci` prints `patch-package` errors the
@@ -110,8 +110,8 @@ ADR-0001 and not reopened since.
 Both 2 and 3 are on LDG-1187 and come out the day Canopy 4 is on Verdaccio. The Canopy team knows
 and has reviewed the patch (design system sync, 2024-02-20).
 
-Locally Canopy comes from the Verdaccio on 4873 (`@meridian:registry` in `.npmrc`); publish it with
-`scripts/publish-local-versions.sh` in the meridian-canopy-ui checkout. The registry is `127.0.0.1`, not `localhost`, because
+Locally Canopy comes from the Verdaccio on 4873 (`@northgate:registry` in `.npmrc`); publish it with
+`scripts/publish-local-versions.sh` in the northgate-canopy-ui checkout. The registry is `127.0.0.1`, not `localhost`, because
 Node 18 resolves `localhost` to `::1` and the in-process Verdaccio listens on IPv4.
 
 ## Build tooling

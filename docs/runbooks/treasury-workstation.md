@@ -57,7 +57,7 @@ the build green without a ticket.
 
 ## Deploy and rollback
 
-Deployed by the release train through `meridianNodePipeline`, chart
+Deployed by the release train through `northgateNodePipeline`, chart
 `platform-tooling/helm/ledgerline-web`. Rollback is `helm rollback ledgerline-web <rev>`; the image
 is immutable and `env.json` comes from the chart, so a rollback is safe on its own. There is no
 database.
@@ -71,8 +71,8 @@ nvm use && npm ci && npm start
 ```
 
 If `npm ci` fails in `postinstall` with a patch-package error, read `patches/README.md`. If it
-fails resolving `@meridian/*`, Verdaccio on 4873 is not up or Canopy 3.7.2 has not been published
-into it (`scripts/publish-local-versions.sh` in the meridian-canopy-ui checkout).
+fails resolving `@northgate/*`, Verdaccio on 4873 is not up or Canopy 3.7.2 has not been published
+into it (`scripts/publish-local-versions.sh` in the northgate-canopy-ui checkout).
 
 ## History
 

@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
-import { CnPageHeaderModule } from '@meridian/canopy-ui/layout';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
+import { CnPageHeaderModule } from '@northgate/canopy-ui/layout';
 
 import { LiquidityApi } from '../../core/api/liquidity.api';
 import { ApiError } from '../../core/http/api-error';

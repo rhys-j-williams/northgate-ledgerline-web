@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CnColumn, CnDataTableModule } from '@meridian/canopy-ui/data-display';
+import { CnColumn, CnDataTableModule } from '@northgate/canopy-ui/data-display';
 
 import { LiquidityPosition } from '../../core/models/liquidity';
 import { StatusBadgeComponent } from '../../shared/components';

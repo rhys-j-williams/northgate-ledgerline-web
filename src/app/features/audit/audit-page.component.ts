@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, untracked } from '@angular/core';
-import { CnPageHeaderModule } from '@meridian/canopy-ui/layout';
+import { CnPageHeaderModule } from '@northgate/canopy-ui/layout';
 import { finalize } from 'rxjs';
 
 import { AuditApi } from '../../core/api/audit.api';

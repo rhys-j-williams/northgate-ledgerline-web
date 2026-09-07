@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { CnPageHeaderModule } from '@meridian/canopy-ui/layout';
-import type { Entitlement } from '@meridian/domain-fixtures';
+import { CnPageHeaderModule } from '@northgate/canopy-ui/layout';
+import type { Entitlement } from '@northgate/domain-fixtures';
 
 import { LdgFilterChip, LdgFilterChipsComponent } from '../../canopy-compat';
 import { EntitlementsApi } from '../../core/api/entitlements.api';
