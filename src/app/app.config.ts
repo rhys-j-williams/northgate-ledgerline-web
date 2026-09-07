@@ -3,8 +3,8 @@ import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom } from '@angula
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling, withRouterConfig } from '@angular/router';
-import { CN_CONFIG, CN_DEFAULT_CONFIG, CnCoreModule } from '@meridian/canopy-ui/core';
-import { CnIconModule } from '@meridian/canopy-ui/icons';
+import { CN_CONFIG, CN_DEFAULT_CONFIG, CnCoreModule } from '@northgate/canopy-ui/core';
+import { CnIconModule } from '@northgate/canopy-ui/icons';
 
 import { routes } from './app.routes';
 import { initialiseSession } from './core/auth/session.initializer';

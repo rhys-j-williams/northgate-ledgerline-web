@@ -2,9 +2,9 @@ import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, Input, OnInit, signal } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
-import { CnCardModule } from '@meridian/canopy-ui/data-display';
-import { CnPageHeaderModule } from '@meridian/canopy-ui/layout';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
+import { CnCardModule } from '@northgate/canopy-ui/data-display';
+import { CnPageHeaderModule } from '@northgate/canopy-ui/layout';
 import { firstValueFrom } from 'rxjs';
 
 import { ApprovalsApi } from '../../core/api/approvals.api';

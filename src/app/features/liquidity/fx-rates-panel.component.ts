@@ -1,7 +1,7 @@
 import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { CnCardModule } from '@meridian/canopy-ui/data-display';
+import { CnCardModule } from '@northgate/canopy-ui/data-display';
 import { switchMap } from 'rxjs';
 
 import { TickerHausApi } from '../../core/api/tickerhaus.api';

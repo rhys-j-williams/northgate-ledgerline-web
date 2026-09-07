@@ -12,7 +12,7 @@ export interface LdgEnvironment {
   production: boolean;
   bffBaseUrl: string;
   tickerHausBaseUrl: string;
-  /** Serve the application from @meridian/domain-fixtures instead of the BFF. Never true in prod. */
+  /** Serve the application from @northgate/domain-fixtures instead of the BFF. Never true in prod. */
   fixtureBackend: boolean;
   fixtureSeed: string;
   /** Freeze the fixture clock (ISO instant). Cypress and Jest set it; leave undefined for a live day. */

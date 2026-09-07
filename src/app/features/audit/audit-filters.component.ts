@@ -5,7 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs';
 
 import { LdgFilterChip, LdgFilterChipsComponent } from '../../canopy-compat';

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { CnNavItem, CnPageShellModule } from '@meridian/canopy-ui/layout';
+import { CnNavItem, CnPageShellModule } from '@northgate/canopy-ui/layout';
 
 import { SessionApi } from '../../core/auth/session.api';
 import { SessionStore } from '../../core/auth/session.store';

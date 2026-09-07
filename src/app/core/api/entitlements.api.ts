@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import type { Entitlement } from '@meridian/domain-fixtures';
+import type { Entitlement } from '@northgate/domain-fixtures';
 import { Observable } from 'rxjs';
 import { APP_CONFIG } from '../config/app-config';
 

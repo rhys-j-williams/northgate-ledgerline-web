@@ -4,8 +4,8 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
-import type { Entitlement } from '@meridian/domain-fixtures';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
+import type { Entitlement } from '@northgate/domain-fixtures';
 
 import { EntitlementLimitUpdate } from '../../core/api/entitlements.api';
 

@@ -1,8 +1,8 @@
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, Input, OnInit, signal } from '@angular/core';
-import { CnCardModule } from '@meridian/canopy-ui/data-display';
-import { CnPageHeaderModule } from '@meridian/canopy-ui/layout';
-import type { Entitlement } from '@meridian/domain-fixtures';
+import { CnCardModule } from '@northgate/canopy-ui/data-display';
+import { CnPageHeaderModule } from '@northgate/canopy-ui/layout';
+import type { Entitlement } from '@northgate/domain-fixtures';
 
 import { EntitlementLimitUpdate, EntitlementsApi } from '../../core/api/entitlements.api';
 import { SessionStore } from '../../core/auth/session.store';

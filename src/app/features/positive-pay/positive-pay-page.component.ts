@@ -1,7 +1,7 @@
 import { DatePipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { CnPageHeaderModule } from '@meridian/canopy-ui/layout';
+import { CnPageHeaderModule } from '@northgate/canopy-ui/layout';
 import { finalize } from 'rxjs';
 
 import { PositivePayApi } from '../../core/api/positive-pay.api';

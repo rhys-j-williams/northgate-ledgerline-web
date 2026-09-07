@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CnBadgeModule, CnBadgeTone } from '@meridian/canopy-ui/data-display';
+import { CnBadgeModule, CnBadgeTone } from '@northgate/canopy-ui/data-display';
 
 import { TitleCaseTokenPipe } from '../pipes/title-case-token.pipe';
 

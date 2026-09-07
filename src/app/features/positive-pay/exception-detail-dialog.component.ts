@@ -1,7 +1,7 @@
 import { DatePipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
 
 import { SessionStore } from '../../core/auth/session.store';
 import { PositivePayException } from '../../core/models/positive-pay';

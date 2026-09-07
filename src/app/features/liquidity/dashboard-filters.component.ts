@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, Input, signal } f
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
 
 import { LdgFilterChip, LdgFilterChipsComponent } from '../../canopy-compat';
 import { PositionBucket } from '../../core/models/liquidity';

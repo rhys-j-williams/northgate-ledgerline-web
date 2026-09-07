@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, Input, signal } from '@angular/core';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
 import { finalize } from 'rxjs';
 
 import { AuditApi } from '../../core/api/audit.api';

@@ -1,8 +1,8 @@
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
-import { CnPageHeaderModule } from '@meridian/canopy-ui/layout';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
+import { CnPageHeaderModule } from '@northgate/canopy-ui/layout';
 
 import { PaymentApproval } from '../../core/models/payment-approval';
 import { EmptyStateComponent, ErrorStateComponent, KpiTileComponent, LoadingStateComponent } from '../../shared/components';

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
 
 @Component({
   selector: 'ldg-not-found-page',

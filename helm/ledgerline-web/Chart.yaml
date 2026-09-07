@@ -8,5 +8,5 @@ maintainers:
   - name: treasury-digital
     email: treasury-digital@example.com
 annotations:
-  meridian.bank/ticket-key: LDG
-  meridian.bank/compliance-critical: "false"
+  northgate.bank/ticket-key: LDG
+  northgate.bank/compliance-critical: "false"

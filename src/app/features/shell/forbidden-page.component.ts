@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, Input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CnButtonModule } from '@meridian/canopy-ui/actions';
+import { CnButtonModule } from '@northgate/canopy-ui/actions';
 
 import { SessionStore } from '../../core/auth/session.store';
 

@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CnSkeletonModule } from '@meridian/canopy-ui/data-display';
+import { CnSkeletonModule } from '@northgate/canopy-ui/data-display';
 
 @Component({
   selector: 'ldg-loading-state',

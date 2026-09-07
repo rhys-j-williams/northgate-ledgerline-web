@@ -1,4 +1,4 @@
-import type { Entitlement } from '@meridian/domain-fixtures';
+import type { Entitlement } from '@northgate/domain-fixtures';
 
 export type EntitlementRole = Entitlement['role'];
 

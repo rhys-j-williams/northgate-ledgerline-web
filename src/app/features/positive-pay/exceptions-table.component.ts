@@ -1,6 +1,6 @@
 import { DatePipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { CnColumn, CnDataTableModule, CnRowSelection } from '@meridian/canopy-ui/data-display';
+import { CnColumn, CnDataTableModule, CnRowSelection } from '@northgate/canopy-ui/data-display';
 
 import { PositivePayException } from '../../core/models/positive-pay';
 import { CutoffCountdownComponent, StatusBadgeComponent } from '../../shared/components';

@@ -1,5 +1,5 @@
 import { inject, Pipe, PipeTransform } from '@angular/core';
-import { CnCurrencyFormatService } from '@meridian/canopy-ui/core';
+import { CnCurrencyFormatService } from '@northgate/canopy-ui/core';
 
 /**
  * Minor units in, formatted major units out. All money in the estate travels as integer minor

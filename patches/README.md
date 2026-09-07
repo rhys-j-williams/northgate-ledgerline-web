@@ -1,20 +1,20 @@
 # patches/
 
 `patch-package` patches applied in `postinstall`. One file per package, named by patch-package.
-Owner: @meridian/treasury-digital. Every patch here needs a ticket on our board *and* one on the
+Owner: @northgate/treasury-digital. Every patch here needs a ticket on our board *and* one on the
 upstream board, and a removal condition in this file. GIS-STD-014 section 7.3 treats patched
 third-party code as first-party for review purposes, so `.npmrc`, this directory and the patch file
 are all in CODEOWNERS with gis-appsec.
 
-## @meridian+canopy-ui+3.7.2.patch
+## @northgate+canopy-ui+3.7.2.patch
 
 | | |
 |---|---|
 | Ours | LDG-1187 |
 | Upstream | CNPY-2140 (Canopy 4, Angular 16 line) |
 | Added | 2024-01-30, t.nakamura, reviewed by the Canopy team (l.fontaine) 2024-02-20 |
-| Remove when | `@meridian/canopy-ui` >= 4.0.0 is on Verdaccio/Artifactory and the app is on it. Delete the patch, the `postinstall` script, `legacy-peer-deps` from `.npmrc`, and `src/app/canopy-compat/` in the same change. |
-| Regenerate with | `patches/tools/apply-canopy-16-edits.py` against a clean `node_modules/@meridian/canopy-ui`, then `npx patch-package @meridian/canopy-ui` |
+| Remove when | `@northgate/canopy-ui` >= 4.0.0 is on Verdaccio/Artifactory and the app is on it. Delete the patch, the `postinstall` script, `legacy-peer-deps` from `.npmrc`, and `src/app/canopy-compat/` in the same change. |
+| Regenerate with | `patches/tools/apply-canopy-16-edits.py` against a clean `node_modules/@northgate/canopy-ui`, then `npx patch-package @northgate/canopy-ui` |
 
 ### What it changes
 
@@ -42,7 +42,7 @@ are all in CODEOWNERS with gis-appsec.
 ### What it does not change
 
 Anything under `themes/` or `styles/`. The Canopy Sass entry points do not resolve through our
-build for a separate reason (the `@use '@meridian/canopy-ui/themes'` export map is missing in
+build for a separate reason (the `@use '@northgate/canopy-ui/themes'` export map is missing in
 3.7.2, CNPY-2098), so `src/styles/_canopy-theme.scss` assembles the Material 16 theme from
 Canopy's palette and token files directly. That is a build-side workaround, not a patch, and it
 also goes away with Canopy 4.
@@ -50,8 +50,8 @@ also goes away with Canopy 4.
 ### If the patch fails to apply
 
 `npm ci` fails. It is meant to. Usually it means the lockfile moved Canopy to a version the patch
-was not generated against (the dependency bot cannot bump `@meridian/*`, so this has only happened
-when someone ran `npm install @meridian/canopy-ui@latest` by hand). Put the version back or, if
+was not generated against (the dependency bot cannot bump `@northgate/*`, so this has only happened
+when someone ran `npm install @northgate/canopy-ui@latest` by hand). Put the version back or, if
 the bump is intended, regenerate the patch with the tool above and re-run the Cypress a11y specs;
 the list and the chips are both in the axe scans.
 
