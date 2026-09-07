@@ -111,7 +111,7 @@ Both 2 and 3 are on LDG-1187 and come out the day Canopy 4 is on Verdaccio. The 
 and has reviewed the patch (design system sync, 2024-02-20).
 
 Locally Canopy comes from the Verdaccio on 4873 (`@meridian:registry` in `.npmrc`); publish it with
-`canopy-ui/scripts/publish-local-versions.sh`. The registry is `127.0.0.1`, not `localhost`, because
+`scripts/publish-local-versions.sh` in the meridian-canopy-ui checkout. The registry is `127.0.0.1`, not `localhost`, because
 Node 18 resolves `localhost` to `::1` and the in-process Verdaccio listens on IPv4.
 
 ## Build tooling

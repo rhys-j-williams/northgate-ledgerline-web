@@ -72,7 +72,7 @@ nvm use && npm ci && npm start
 
 If `npm ci` fails in `postinstall` with a patch-package error, read `patches/README.md`. If it
 fails resolving `@meridian/*`, Verdaccio on 4873 is not up or Canopy 3.7.2 has not been published
-into it (`canopy-ui/scripts/publish-local-versions.sh`).
+into it (`scripts/publish-local-versions.sh` in the meridian-canopy-ui checkout).
 
 ## History
 
